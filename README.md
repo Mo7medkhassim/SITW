@@ -1,2 +1,1 @@
-# SITW
-# Dashboard for SIT inititve 
+# SIT_Project
