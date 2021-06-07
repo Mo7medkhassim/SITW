@@ -21,3 +21,10 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+// Dashboard
+Route::prefix('dashboard')->name('dashboard.')->group( function(){
+    Route::get('/blog', 'Dashboard\BlogController@index')->name('blog');
+});
+// Site
+Route::get('/blog', 'Site\BlogController@index')->name('blog');
