@@ -1,4 +1,4 @@
-@extends('site.blog.layouts.app')
+@extends('site.layouts.app')
 
 @section('main-section')
  <!-- Responsive navbar-->
