@@ -1,3 +1,6 @@
+<!doctype html>
+
+<html>
 <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>@yield('title')</title>
@@ -18,4 +21,3 @@
 
     <!-- coustom style css  -->
     <link rel="stylesheet" href="{{asset('dashboard/dist/css/common.css')}}">
-    

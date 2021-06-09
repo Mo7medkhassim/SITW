@@ -14,18 +14,30 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 Auth::routes();
 
 
-// Dashboard
-Route::prefix('dashboard')->name('dashboard.')->group( function(){
-    Route::get('/home', 'HomeController@index')->name('home'); //(dashboard/home) for home page
 
-    Route::get('/blog', 'Dashboard\BlogController@index')->name('blog');
+// Dashboard
+Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'],function () {
+    // admin login page
+    Route::get('/login', 'LoginController@getLogin')->name('dashboard.login');
+    Route::post('/login', 'LoginController@Login')->name('dashboard.login');
+    // logout
+    Route::get('/logout', 'LoginController@Logout')->name('dashboard.logout');
+    // dashboard home page
+    Route::group(['middleware' => ['admin']],function(){
+        Route::get('/home', 'HomeController@index')->name('dashboard.home');
+
+        // blog routes
+        Route::get('/blog', 'Dashboard\BlogController@index')->name('blog');
+    });
 });
+
+
 // Site
 Route::get('/blog', 'Site\BlogController@index')->name('blog');

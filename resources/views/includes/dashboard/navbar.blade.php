@@ -14,7 +14,7 @@
                     <a href="index3.html" class="nav-link">
                         <i class="fas fa-globe"></i>
                         <span>
-                            Visit Store
+                            Visit Website
                         </span>
                     </a>
                 </li>
@@ -49,7 +49,7 @@
                             <span>Profile</span>
                         </a>
                         <!-- <div class="dropdown-divider"></div> -->
-                        <a href="" class="dropdown-item">
+                        <a href="{{ route('dashboard.logout')}}" class="dropdown-item">
                             <i class="fas fa-sign-out-alt"></i> <span> Logout</span>
                         </a>
                     </div>
