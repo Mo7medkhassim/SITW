@@ -34,7 +34,7 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'],function () {
         Route::get('/home', 'HomeController@index')->name('dashboard.home');
 
         // blog routes
-        Route::get('/blog', 'Dashboard\BlogController@index')->name('blog');
+        Route::get('/blog', 'BlogController@index')->name('blog');
     });
 });
 
