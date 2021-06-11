@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Admin;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,10 +28,13 @@ class LoginController extends Controller
         $email = $request->email;
         $password = $request->password;
 
+
         // use Auth to check if data existe i database
         // Authentication passed...
 
         if(auth()->guard('admin')->attempt(['email' => $email, 'password' => $password])){
+            // get the current
+            $user  = auth('admin')->user();
 
             return redirect()->route('dashboard.home');
 

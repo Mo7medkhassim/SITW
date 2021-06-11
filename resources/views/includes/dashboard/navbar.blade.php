@@ -8,49 +8,50 @@
                 </li>
             </ul>
             <!-- Right navbar links -->
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav m_dir">
                 <!-- store web site -->
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="index3.html" class="nav-link">
                         <i class="fas fa-globe"></i>
                         <span>
-                            Visit Website
+                            @lang('site.site')
                         </span>
                     </a>
                 </li>
-                <!-- Messages Dropdown Menu -->
+                <!-- language control -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <span class="lang">En</span>
+                        <span class="lang"><i class="far fa-flag"></i></span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            English
-                            <!-- Message End -->
-                        </a>
-                        <a href="#" class="dropdown-item">
-                            <!-- Message Start -->
-                            Arabic
-                        </a>
+                        <ul>
+                            @foreach(LaravelLocalization::getSupportedLocales() as $localeCode => $properties)
+                            <li>
+                                <a rel="alternate" hreflang="{{ $localeCode }}" href="{{ LaravelLocalization::getLocalizedURL($localeCode, null, [], true) }}">
+                                    {{ $properties['native'] }}
+                                </a>
+                            </li>
+                            @endforeach
+                        </ul>
+
                     </div>
                 </li>
                 <!-- User Control -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
                         <i class="fas fa-user"></i>
-                        <span>user</span>
+                        <span> @lang('site.admin')</span>
                         <!-- <i class="fas fa-angle-down"></i> -->
                     </a>
                     <div class="dropdown-menu dropdown-menu-md dropdown-menu-right">
                         <!-- <div class="dropdown-divider"></div> -->
                         <a href="#" class="dropdown-item">
                             <i class="fas fa-user"></i>
-                            <span>Profile</span>
+                            <span> @lang('site.profile')</span>
                         </a>
                         <!-- <div class="dropdown-divider"></div> -->
                         <a href="{{ route('dashboard.logout')}}" class="dropdown-item">
-                            <i class="fas fa-sign-out-alt"></i> <span> Logout</span>
+                            <i class="fas fa-sign-out-alt"></i> <span>  @lang('site.logout')</span>
                         </a>
                     </div>
                 </li>

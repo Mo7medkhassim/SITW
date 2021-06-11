@@ -22,4 +22,10 @@ class Admin extends Authenticatable
     protected $hidden = [
        'password', 'created_at', 'updated_at','remmber_token'
     ];
+
+
+    public function scopeId($r){
+
+        return $r;
+    }
 }

@@ -15,33 +15,39 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Route::get('/', function () {
-//     return view('welcome');
-// });
 
-Auth::routes();
+Route::group([
+    'prefix' => LaravelLocalization::setLocale(),
+
+    'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath']
+], function () {
+    //     return view('welcome');
+    // });
+
+    Auth::routes();
 
 
 
-// Dashboard
-Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'],function () {
-    // admin login page
-    Route::get('/login', 'LoginController@getLogin')->name('dashboard.login');
-    Route::post('/login', 'LoginController@Login')->name('dashboard.login');
-    // logout
-    Route::get('/logout', 'LoginController@Logout')->name('dashboard.logout');
-    // dashboard home page
-    Route::group(['middleware' => ['admin']],function(){
-        Route::get('/home', 'HomeController@index')->name('dashboard.home');
+    // Dashboard
+    Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'], function () {
+        // admin login page
+        Route::get('/login', 'LoginController@getLogin')->name('dashboard.login');
+        Route::post('/login', 'LoginController@Login')->name('dashboard.login');
+        // logout
+        Route::get('/logout', 'LoginController@Logout')->name('dashboard.logout');
+        // dashboard home page
+        Route::group(['middleware' => ['admin']], function () {
+            Route::get('/home', 'HomeController@index')->name('dashboard.home');
 
-        // blog routes
-        Route::get('/blog', 'BlogController@index')->name('blog');
-        Route::get('/post', 'PostController@index')->name('post');
-        Route::get('/post/create', 'PostController@create')->name('post.create');
-        Route::get('/post/{id}', 'PostController@show');
-        
+            // blog routes
+            Route::get('/blog', 'BlogController@index')->name('blog');
+            Route::get('/post', 'PostController@index')->name('post');
+            Route::get('/post/create', 'PostController@create')->name('post.create');
+            Route::get('/post/{id}', 'PostController@show');
+        });
     });
+    /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/
 });
-
 
 // Site
 Route::get('/blog', 'Site\BlogController@index')->name('blog');
