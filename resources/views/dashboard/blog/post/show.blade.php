@@ -1,1 +1,4 @@
-{{$id}}
+{{$post->title}}
+
+
+<!-- Move to Site-->

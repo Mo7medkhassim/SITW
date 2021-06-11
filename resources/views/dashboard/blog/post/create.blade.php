@@ -15,7 +15,7 @@
 
 @section('content')
 
-<section class="content py-5">
+<section class="content">
 
 <div class="card card-primary">
     <div class="card-header">

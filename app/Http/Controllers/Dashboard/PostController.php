@@ -17,7 +17,8 @@ class PostController extends Controller
     } 
 
     public function show($id){
-        return view('dashboard.blog.post.show', ['id' => $id]);
+        $post = Post::findOrFail($id);
+        return view('dashboard.blog.post.show', ['post' => $post]);
     }
 
     public function create(){
