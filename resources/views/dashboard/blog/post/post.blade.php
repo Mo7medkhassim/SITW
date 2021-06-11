@@ -11,7 +11,7 @@
 
 @section('content')
 <div>
-    <a class="btn btn-success" href="#">Add New</a>
+    <a class="btn btn-success" href="{{ route('post.create') }}">Add New</a>
 </div>
 
 

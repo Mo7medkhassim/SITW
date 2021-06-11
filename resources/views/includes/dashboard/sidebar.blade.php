@@ -14,13 +14,12 @@
                        <li class="nav-item">
                            <a class="nav-link" href="{{ route('dashboard.home') }}">
                                <i class="nav-icon fas fa-home"></i>
-
                                <p> Dashboard </p>
                            </a>
                        </li>
                        <li class="nav-item has-treeview">
                            <a href="#" class="nav-link">
-                               <i class="fas fa-file nav-icon"></i>
+                               <i class="fas fa-project-diagram nav-icon"></i>
                                <p>
                                    Projects
                                    <i class="right fas fa-angle-left"></i>
@@ -43,7 +42,7 @@
                        </li>
                        <li class="nav-item has-treeview">
                            <a href="#" class="nav-link">
-                               <i class="fas fa-file nav-icon"></i>
+                               <i class="far fa-newspaper nav-icon"></i>
                                <p>
                                    Blog
                                    <i class="right fas fa-angle-left"></i>
@@ -52,7 +51,7 @@
                            <ul class="nav nav-treeview">
                                <li class="nav-item">
                                    <a href="{{ route('post') }}" class="nav-link e-fonts">
-                                       <i class="far fa-circle nav-icon e-icon"></i>
+                                       <i class="far fa-file-alt nav-icon e-icon"></i>
                                        <p>Posts</p>
                                    </a>
                                </li>

@@ -36,7 +36,9 @@ Route::group(['prefix' => 'dashboard', 'namespace' => 'Dashboard'],function () {
         // blog routes
         Route::get('/blog', 'BlogController@index')->name('blog');
         Route::get('/post', 'PostController@index')->name('post');
+        Route::get('/post/create', 'PostController@create')->name('post.create');
         Route::get('/post/{id}', 'PostController@show');
+        
     });
 });
 

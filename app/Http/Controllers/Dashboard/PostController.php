@@ -17,10 +17,10 @@ class PostController extends Controller
     } 
 
     public function show($id){
-        return view('dashboard.blog.post.show');
+        return view('dashboard.blog.post.show', ['id' => $id]);
     }
 
     public function create(){
-
+        return view('dashboard.blog.post.create');
     }
 }
