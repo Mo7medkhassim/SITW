@@ -17,75 +17,82 @@
 
 <section class="content">
 
-<div class="card card-primary">
-    <div class="card-header">
-        <h3 class="card-title">Post</h3>
-    </div>
-    <!-- /.card-header -->
-    <!-- form start -->
-    <form role="form">
-        <div class="card-body">
+    <div class="card card-primary">
+        <div class="card-header">
+            <h3 class="card-title">Add New Post</h3>
+        </div>
+        <!-- /.card-header -->
+        <!-- form start -->
+        <form role="form" method="POST" action="{{ route('post.store') }}">
+            @csrf 
+            <div class="card-body">
 
-            <div class="row">
+                <div class="row">
 
-                <div class="col-md-12">
-                    <div class="">
-                        <div class="form-group">
-                            <label for="posttitle">Post Title</label>
-                            <input type="text" name="title" class="form-control" id="posttitle" placeholder="Enter title">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6">
+                    <div class="col-md-12">
+                        <div class="">
                             <div class="form-group">
-                                <label for="postslug">Slug</label>
-                                <input type="text" name="slug" class="form-control" id="postslug" placeholder="Enter slug">
+                                <label for="posttitle">Post Title</label>
+                                <input type="text" name="title" class="form-control" id="posttitle" placeholder="Enter title">
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="input-group">
-                                <label for="postfeaturedimg">Post Featured Image</label>
-                                <input type="file" name="image" class="form-control-file border py-1 bg-white" id="postfeaturedimg">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="postslug">Slug</label>
+                                    <input type="text" name="slug" class="form-control" id="postslug" placeholder="Enter slug">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="input-group">
+                                    <label for="postfeaturedimg">Post Featured Image</label>
+                                    <input type="file" name="image" class="form-control-file border py-1 bg-white" id="postfeaturedimg">
 
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card card-outline card-info">
+                            <div class="card-header">
+                                <h3 class="card-title">
+                                    Post Content
+                                </h3>
+                                <!-- tools box -->
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
+                                        <i class="fas fa-minus"></i></button>
+                                </div>
+                                <!-- /. tools -->
+                            </div>
+                            <!-- /.card-header -->
+                            <div class="card-body pad">
+                                <div class="mb-3">
+                                    <textarea class="textarea" name="body" placeholder="Place some text here" style="width: 100%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                </div>
-
-                <div class="col-md-12">
-                    <div class="card card-outline card-info">
-                        <div class="card-header">
-                            <h3 class="card-title">
-                                Post Content
-                            </h3>
-                            <!-- tools box -->
-                            <div class="card-tools">
-                                <button type="button" class="btn btn-tool btn-sm" data-card-widget="collapse" data-toggle="tooltip" title="Collapse">
-                                    <i class="fas fa-minus"></i></button>
-                            </div>
-                            <!-- /. tools -->
-                        </div>
-                        <!-- /.card-header -->
-                        <div class="card-body pad">
-                            <div class="mb-3">
-                                <textarea class="textarea" name="body" placeholder="Place some text here" style="width: 100%; height: 400px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
-                            </div>
+                    <!-- /.col-->
+                    <div class="col-md-12">
+                        <div class="form-check">
+                            <input type="checkbox" name="status" class="form-check-input" id="statuscheck">
+                            <label class="form-check-label" for="exampleCheck1">Publish</label>
                         </div>
                     </div>
                 </div>
-                <!-- /.col-->
+                <!-- ./row -->
+
             </div>
-            <!-- ./row -->
+            <!-- /.card-body -->
 
-        </div>
-        <!-- /.card-body -->
-
-        <div class="card-footer">
-            <button type="submit" class="btn btn-primary">Submit</button>
-        </div>
-    </form>
-</div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+    </div>
 
 
 </section>
