@@ -41,7 +41,7 @@ Route::group([
 
             // blog routes
             Route::get('/blog', 'BlogController@index')->name('blog');
-            
+
             Route::get('/post', 'PostController@index')->name('post');
             Route::get('/post/create', 'PostController@create')->name('post.create');
             Route::post('/post', 'PostController@store')->name('post.store');
