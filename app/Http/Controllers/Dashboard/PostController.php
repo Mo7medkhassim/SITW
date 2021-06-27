@@ -43,5 +43,11 @@ class PostController extends Controller
         $post->save();
         return redirect('/dashboard/post');
     }
+
+    public function destroy($id){
+        $post = Post::findOrFail($id);
+        $post->delete();
+        return redirect('/dashboard/post');
+    }
 }
 

@@ -11,14 +11,14 @@
 
 @section('content')
 <div>
-    <a class="btn btn-success" href="{{ route('post.create') }}">Add New</a>
+    <a class="btn btn-success" href="{{ route('tag.create') }}">Add New</a>
 </div>
 
 
 <!-- /.card -->
 <div class="card my-5">
     <div class="card-header">
-        <h3 class="card-title">Blog Posts Table</h3>
+        <h3 class="card-title">Blog Tags Table</h3>
     </div>
     <!-- /.card-header -->
     <div class="card-body">
@@ -26,28 +26,20 @@
             <thead>
                 <tr>
                     <th>No.</th>
-                    <th>Post Title</th>
-                    <th>Author</th>
-                    <th>Date</th>
-                    <th>Categories</th>
-                    <th>Tags</th>
-                    <th>Status</th>
+                    <th>Tag Name</th>
+                    <th>Slug</th>
                     <th>Delete</th>
                     <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach($posts as $post)
+                @foreach($tags as $tag)
                 <tr>
                     <td>{{$loop->index + 1}}</td>
-                    <td>{{$post->title}}</td>
-                    <td>{{$post->author}}</td>
-                    <td>{{$post->created_at}}</td>
-                    <td></td>
-                    <td>A</td>
-                    <td>{{$post->status}}</td>
+                    <td>{{$tag->name}}</td>
+                    <td>{{$tag->slug}}</td>
                     <td>
-                    <form action="{{ route('post.delete', $post->id) }}" method="POST">
+                    <form action="{{ route('tag.delete', $tag->id) }}" method="POST">
                             @csrf
                             {{method_field('DELETE')}}
                             <button type="submit" class="btn btn-danger"> 
@@ -56,7 +48,9 @@
                         </form>
                     </td>
                     <td>
-                    <i class="fas fa-edit"></i>
+                    <button type="submit" class="btn btn-warning"> 
+                                <i class="fas fa-edit"></i>
+                            </button>
                     </td>
 
                 </tr>

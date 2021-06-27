@@ -42,10 +42,26 @@ Route::group([
             // blog routes
             Route::get('/blog', 'BlogController@index')->name('blog');
 
+            // Post routes
             Route::get('/post', 'PostController@index')->name('post');
             Route::get('/post/create', 'PostController@create')->name('post.create');
             Route::post('/post', 'PostController@store')->name('post.store');
             Route::get('/post/{id}', 'PostController@show');
+            Route::delete('/post/{id}/delete', 'PostController@destroy')->name('post.delete');   
+            
+            // Category routes
+            Route::get('/category', 'CategoryController@index')->name('category');
+            Route::get('/category/create', 'CategoryController@create')->name('category.create');
+            Route::post('/category', 'CategoryController@store')->name('category.store');
+            Route::get('/category/{id}', 'CategoryController@show');
+            Route::delete('/category/{id}/delete', 'CategoryController@destroy')->name('category.delete');   
+
+             // Tag routes
+             Route::get('/tag', 'TagController@index')->name('tag');
+             Route::get('/tag/create', 'TagController@create')->name('tag.create');
+             Route::post('/tag', 'TagController@store')->name('tag.store');
+             Route::get('/tag/{id}', 'TagController@show');
+             Route::delete('/tag/{id}/delete', 'TagController@destroy')->name('tag.delete');   
         });
     });
     /** ADD ALL LOCALIZED ROUTES INSIDE THIS GROUP **/

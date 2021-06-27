@@ -13,7 +13,7 @@ return [
     // sidebar
     'projects' => 'Projects',
     'all_projects' => ' All Progects',
-    'blog' => ' Bloge',
+    'blog' => ' Blog',
     'role' => 'Role & Permissions',
     'administration' => 'administration',
     'system' => 'System Informations',
