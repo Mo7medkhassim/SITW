@@ -24,8 +24,31 @@ class CategoryController extends Controller
         return view('dashboard.blog.category.create');
     }
 
-    public function store(){
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'slug' => 'required',
+        ]);
         $category = new Category();
+        $category->name = request('title');
+        $category->slug = request('slug');
+        $category->save();
+        return redirect('/dashboard/category');
+    }
+
+    public function edit($id)
+    {
+        $category = Category::findOrFail($id);
+        return view('dashboard.blog.category.edit', ['category' => $category]);
+    }
+
+    public function update(Request $request, $id){
+        $this->validate($request, [
+            'title' => 'required',
+            'slug' => 'required',
+        ]);
+        $category = Category::findOrFail($id);
         $category->name = request('title');
         $category->slug = request('slug');
         $category->save();
@@ -35,6 +58,6 @@ class CategoryController extends Controller
     public function destroy($id){
         $category = Category::findOrFail($id);
         $category->delete();
-        return redirect('/dashboard/category');
+        return redirect()->back();
     } 
 }

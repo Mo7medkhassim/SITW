@@ -47,13 +47,18 @@ Route::group([
             Route::get('/post/create', 'PostController@create')->name('post.create');
             Route::post('/post', 'PostController@store')->name('post.store');
             Route::get('/post/{id}', 'PostController@show');
-            Route::delete('/post/{id}/delete', 'PostController@destroy')->name('post.delete');   
+            Route::get('/post/{id}/edit', 'PostController@edit')->name('post.edit'); 
+            Route::put('/post/{id}/update', 'PostController@update')->name('post.update'); 
+            Route::delete('/post/{id}/delete', 'PostController@destroy')->name('post.delete');  
+            
             
             // Category routes
             Route::get('/category', 'CategoryController@index')->name('category');
             Route::get('/category/create', 'CategoryController@create')->name('category.create');
             Route::post('/category', 'CategoryController@store')->name('category.store');
             Route::get('/category/{id}', 'CategoryController@show');
+            Route::get('/category/{id}/edit', 'CategoryController@edit')->name('category.edit');
+            Route::put('/category/{id}/update', 'CategoryController@update')->name('category.update');    
             Route::delete('/category/{id}/delete', 'CategoryController@destroy')->name('category.delete');   
 
              // Tag routes
@@ -61,6 +66,8 @@ Route::group([
              Route::get('/tag/create', 'TagController@create')->name('tag.create');
              Route::post('/tag', 'TagController@store')->name('tag.store');
              Route::get('/tag/{id}', 'TagController@show');
+             Route::get('/tag/{id}/edit', 'TagController@edit')->name('tag.edit');
+             Route::put('/tag/{id}/update', 'TagController@update')->name('tag.update');    
              Route::delete('/tag/{id}/delete', 'TagController@destroy')->name('tag.delete');   
         });
     });

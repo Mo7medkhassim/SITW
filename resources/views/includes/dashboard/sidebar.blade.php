@@ -21,7 +21,7 @@
                            <a href="#" class="nav-link">
                                <i class="fas fa-project-diagram nav-icon"></i>
                                <p>
-                               @lang('site.projects')
+                                   @lang('site.projects')
                                    <i class="right fas fa-angle-left"></i>
                                </p>
                            </a>
@@ -44,7 +44,7 @@
                            <a href="#" class="nav-link">
                                <i class="far fa-newspaper nav-icon"></i>
                                <p>
-                               @lang('site.blog')
+                                   @lang('site.blog')
                                    <i class="right fas fa-angle-left"></i>
                                </p>
                            </a>
@@ -52,19 +52,20 @@
                                <li class="nav-item">
                                    <a href="{{ route('post') }}" class="nav-link e-fonts">
                                        <i class="far fa-file-alt nav-icon e-icon"></i>
-                                       <p>Posts</p>
+                                       <p>@lang('site.posts')</p>
                                    </a>
                                </li>
                                <li class="nav-item">
-                                   <a href="../../index2.html" class="nav-link e-fonts">
+                                   <a href="{{ route('category') }}" class="nav-link e-fonts">
                                        <i class="far fa-list-alt nav-icon e-icon"></i>
-                                       <p>Categories</p>
+                                       <p>@lang('site.categories')</p>
                                    </a>
                                </li>
                                <li class="nav-item">
-                                   <a href="../../index2.html" class="nav-link e-fonts">
-                                       <i class="fas fa-hashtag nav-icon e-icon"></i>
-                                       <p>Tags</p>
+                                   <a href="{{ route('tag') }}" class="nav-link e-fonts">
+                                       <i class="nav-icon fas fa-tags" style="font-size: 13px;
+    padding: 4px 15px 4px 20px;"></i>
+                                       <p>@lang('site.tags')</p>
                                    </a>
                                </li>
                            </ul>

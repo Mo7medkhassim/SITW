@@ -12,8 +12,11 @@ return [
     // sidebar
     // sidebar
     'projects' => 'Projects',
-    'all_projects' => ' All Progects',
-    'blog' => ' Blog',
+    'all_projects' => 'All Progects',
+    'blog' => 'Blog',
+    'posts' => 'Posts',
+    'categories' => 'Categories',
+    'tags' => 'Tags',
     'role' => 'Role & Permissions',
     'administration' => 'administration',
     'system' => 'System Informations',

@@ -23,9 +23,32 @@ class TagController extends Controller
     public function create(){
         return view('dashboard.blog.tag.create');
     }
-
-    public function store(){
+   
+    public function store(Request $request)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'slug' => 'required',
+        ]);
         $tag = new Tag();
+        $tag->name = request('title');
+        $tag->slug = request('slug');
+        $tag->save();
+        return redirect('/dashboard/tag');
+    }
+
+    public function edit($id)
+    {
+        $tag = Tag::findOrFail($id);
+        return view('dashboard.blog.tag.edit', ['tag' => $tag]);
+    }
+
+    public function update(Request $request, $id){
+        $this->validate($request, [
+            'title' => 'required',
+            'slug' => 'required',
+        ]);
+        $tag = Tag::findOrFail($id);
         $tag->name = request('title');
         $tag->slug = request('slug');
         $tag->save();
@@ -35,6 +58,6 @@ class TagController extends Controller
     public function destroy($id){
         $tag = Tag::findOrFail($id);
         $tag->delete();
-        return redirect('/dashboard/tag');
+        return redirect()->back();
     } 
 }

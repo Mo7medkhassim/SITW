@@ -32,8 +32,8 @@
                     <th>Categories</th>
                     <th>Tags</th>
                     <th>Status</th>
-                    <th>Delete</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -47,17 +47,24 @@
                     <td>A</td>
                     <td>{{$post->status}}</td>
                     <td>
-                    <form action="{{ route('post.delete', $post->id) }}" method="POST">
+                        <a href="{{ route('post.edit', $post->id)}}">
+                            <button class="btn btn-warning">
+
+                                <i class="fas fa-edit"></i>
+
+                            </button>
+                        </a>
+                    </td>
+                    <td>
+                        <form action="{{ route('post.delete', $post->id) }}" method="POST">
                             @csrf
                             {{method_field('DELETE')}}
-                            <button type="submit" class="btn btn-danger"> 
+                            <button type="submit" class="btn btn-danger">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
                     </td>
-                    <td>
-                    <i class="fas fa-edit"></i>
-                    </td>
+
 
                 </tr>
                 @endforeach

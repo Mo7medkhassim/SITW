@@ -13,10 +13,14 @@ return [
     'projects' => 'المشاريع',
     'all_projects' => ' عرض جميع المشاريع',
     'blog' => ' المدونة',
+    'posts' => 'المقالات',
+    'categories' => 'التصنيقات',
+    'tags' => 'الوسوم',
     'role' => 'الصلاحيات',
     'administration' => 'الادارة',
     'system' => 'معلومات النظام',
     'mailbox' => 'صندوق البريد',
+    
 
      // crud
     'create' => 'اضافة',

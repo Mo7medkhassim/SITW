@@ -28,8 +28,8 @@
                     <th>No.</th>
                     <th>Category Name</th>
                     <th>Slug</th>
-                    <th>Delete</th>
                     <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,19 +39,25 @@
                     <td>{{$category->name}}</td>
                     <td>{{$category->slug}}</td>
                     <td>
-                    <form action="{{ route('category.delete', $category->id) }}" method="POST">
+                        <a href="{{ route('category.edit', $category->id)}}">
+                            <button type="submit" class="btn btn-warning">
+
+                                <i class="fas fa-edit"></i>
+
+                            </button>
+                        </a>
+                    </td>
+
+                    <td>
+                        <form action="{{ route('category.delete', $category->id) }}" method="POST">
                             @csrf
                             {{method_field('DELETE')}}
-                            <button type="submit" class="btn btn-danger"> 
+                            <button type="submit" class="btn btn-danger">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </form>
                     </td>
-                    <td>
-                    <button type="submit" class="btn btn-warning"> 
-                                <i class="fas fa-edit"></i>
-                            </button>
-                    </td>
+
 
                 </tr>
                 @endforeach
