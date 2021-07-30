@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\dashboard;
 
 use App\Http\Controllers\Controller;
+use App\Modules\Category;
+use App\Modules\Tag;
 use Illuminate\Http\Request;
 use App\Modules\Post;
 use Illuminate\Support\Facades\Auth;
@@ -27,7 +29,9 @@ class PostController extends Controller
 
     public function create()
     {
-        return view('dashboard.blog.post.create');
+        $categories = Category::all();
+        $tags = Tag::all();
+        return view('dashboard.blog.post.create', ['categories' => $categories, 'tags' => $tags]);
     }
 
     public function store(Request $request)
@@ -50,14 +54,22 @@ class PostController extends Controller
         }
         error_log(auth('admin')->user()->id);
         $post->author = auth('admin')->user()->id;
+       
         $post->save();
+
+        $post->categories()->sync($request->categories);
+        $post->tags()->sync($request->tags);
+
         return redirect('/dashboard/post');
     }
 
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        return view('dashboard.blog.post.edit', ['post' => $post]);
+        $categories = Category::all();
+        $tags = Tag::all();
+
+        return view('dashboard.blog.post.edit', ['post' => $post, 'categories' => $categories, 'tags' => $tags]);
     }
 
     public function update(Request $request, $id)
@@ -68,7 +80,7 @@ class PostController extends Controller
             'body' => 'required',
             'image' => 'required',
         ]);
-        $post = Post::findOrFail($id);
+        $post = Post::with('categories, tags')->findOrFail($id);
         $post->title = request('title');
         $post->slug = request('slug');
         $post->body = request('body');
@@ -80,6 +92,8 @@ class PostController extends Controller
         }
         error_log(auth('admin')->user()->id);
         $post->author = auth('admin')->user()->id;
+        $post->categories()->sync($request->categories);
+        $post->tags()->sync($request->tags);
         $post->save();
         return redirect('/dashboard/post');
     }

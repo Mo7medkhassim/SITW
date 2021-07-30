@@ -11,6 +11,10 @@
 <link rel="stylesheet" href="{{ asset('dashboard/dist/css/adminlte.min.css')}}">
 <!-- summernote -->
 <link rel="stylesheet" href="{{ asset('dashboard/plugins/summernote/summernote-bs4.css')}}">
+<!-- Select2 -->
+<link rel="stylesheet" href="{{ asset('dashboard/plugins/select2/css/select2.min.css')}}">
+<link rel="stylesheet" href="{{ asset('dashboard/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css')}}">
+
 @endsection
 
 @section('content')
@@ -24,7 +28,7 @@
         <!-- /.card-header -->
         <!-- form start -->
         <form role="form" method="POST" action="{{ route('post.store') }}">
-            @csrf 
+            @csrf
             <div class="card-body">
 
                 <div class="row">
@@ -48,6 +52,32 @@
                                     <label for="postfeaturedimg">Post Featured Image</label>
                                     <input type="file" name="image" class="form-control-file border py-1 bg-white" id="postfeaturedimg">
 
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group" data-select2-id="38">
+                                    <label>Category</label>
+                                    <select name="categories[]" class="select2 select2-hidden-accessible" multiple="" data-placeholder="Select Category" style="width: 100%;" data-select2-id="7" tabindex="-1" aria-hidden="true">
+                                        @foreach($categories as $category)
+                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        @endforeach
+
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group" data-select2-id="75">
+                                    <label>Tags</label>
+                                    <div class="select2-purple" data-select2-id="65">
+                                        <select name="tags[]" class="select2 select2-hidden-accessible" multiple="" data-placeholder="Select Tag" data-dropdown-css-class="select2-purple" style="width: 100%;" data-select2-id="15" tabindex="-1" aria-hidden="true">
+                                        @foreach($tags as $tag)
+                                        <option value="{{$tag->id}}">{{$tag->name}}</option>
+                                        @endforeach
+                                        </select>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -103,10 +133,22 @@
 <!-- Summernote -->
 <script src="{{ asset('dashboard/plugins/summernote/summernote-bs4.min.js')}}"></script>
 
+<!-- Select2 -->
+<script src="{{ asset('dashboard/plugins/select2/js/select2.full.min.js')}}"></script>
+
 <script>
     $(function() {
         // Summernote
         $('.textarea').summernote()
+
+        //Initialize Select2 Elements
+        $('.select2').select2()
+
+        //Initialize Select2 Elements
+        $('.select2bs4').select2({
+            theme: 'bootstrap4'
+        })
+
     })
 </script>
 @endsection
